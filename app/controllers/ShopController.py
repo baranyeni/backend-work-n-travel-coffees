@@ -7,7 +7,7 @@ class ShopController:
     def __init__(self):
         pass
 
-    def list(self):
+    def list():
         return build_shops()
 
 
