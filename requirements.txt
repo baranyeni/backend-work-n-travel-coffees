@@ -1,0 +1,13 @@
+# Everything needed in our project
+
+# Micro WEB development framework
+Flask
+
+# WEB Server just like nginx
+gunicorn
+
+# Python WEB request library
+requests
+
+# Admin panel with ease of use
+flask-admin
