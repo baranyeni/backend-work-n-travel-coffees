@@ -1,4 +1,4 @@
-# work-n-travel-coffees
+# backend-work-n-travel-coffees
 
 This project was made with the idea of collecting and listing coffee shops that give their customers the chance to sit and work freely with their laptops. People who prefer to work while drinking delicious coffee in different and cozy places on a daily basis are invited to explore and are expected to share their experiences and evaluations with other people on this platform.
 
