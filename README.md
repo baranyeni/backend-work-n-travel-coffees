@@ -18,3 +18,14 @@ Users should;
 
 - The platform will be accessed from browsers
 - It should have responsive behavior
+
+
+### Scripts
+To create messages.pot file from the text used in templates
+- pybabel extract -F babel.cfg -o locales/messages.pot ../web
+
+To create a new translation
+- pybabel init -i messages.pot -d translations -l <lang_code>
+
+To compile our translations
+- pybabel compile -d translations

@@ -1,13 +1,13 @@
 # Everything needed in our project
 
 # Micro WEB development framework
-Flask
+Flask~=2.0.3
 
 # WEB Server just like nginx
 gunicorn
 
 # Python WEB request library
-requests
+requests~=2.27.1
 
-# Admin panel with ease of use
-flask-admin
+# Localization
+flask-babel
