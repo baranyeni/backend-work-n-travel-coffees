@@ -20,7 +20,7 @@ Users should;
 - It should have responsive behavior
 
 
-### Scripts
+### Scripts & Configuration
 To create messages.pot file from the text used in templates
 - pybabel extract -F babel.cfg -o locales/messages.pot ../web
 
@@ -29,3 +29,8 @@ To create a new translation
 
 To compile our translations
 - pybabel compile -d translations
+
+
+For DB management, open flask shell run in order;
+- from wsgi import db
+- db.create_all

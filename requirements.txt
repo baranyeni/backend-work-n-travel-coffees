@@ -13,4 +13,10 @@ requests~=2.27.1
 flask-babel
 
 # Database helper
-Flask-SQLAlchemy
+Flask-SQLAlchemy~=2.0
+
+# Database connection driver
+pymysql
+
+# Environmental variables with dotenv
+python-dotenv

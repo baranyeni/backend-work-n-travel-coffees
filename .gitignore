@@ -8,3 +8,6 @@ __pycache__/
 
 # OSX
 .DS_store
+
+# Config file
+config/env/.env.development
