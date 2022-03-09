@@ -1,7 +1,4 @@
-from flask import jsonify, json
-
-import requests as req
-import random
+from flask import jsonify
 
 
 class ShopController:

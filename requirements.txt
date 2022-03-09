@@ -16,7 +16,8 @@ flask-babel
 Flask-SQLAlchemy~=2.0
 
 # Database connection driver
+SQLAlchemy~=1.4.31
 pymysql
 
 # Environmental variables with dotenv
-python-dotenv
+python-dotenv~=0.19.2

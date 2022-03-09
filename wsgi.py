@@ -11,9 +11,8 @@ app = Flask(__name__,
             static_folder='web/static',
             template_folder='web/templates')
 
-app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'config/locales/translations'
-app.register_blueprint(ShopRouter, url_prefix='/shops')
 app.config.from_pyfile('config/project.py')
+app.register_blueprint(ShopRouter, url_prefix='/shops')
 babel = Babel(app, default_locale="en")
 db = SQLAlchemy(app)
 
