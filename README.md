@@ -32,5 +32,10 @@ To compile our translations
 
 
 For DB management, open flask shell run in order;
-- from wsgi import db
-- db.create_all
+- from db.database import init_db
+- init_db
+
+## Environment Variables
+I had used the dotenv method to store our credentials. To specify
+environment variables you should duplicate the env/.env.sample and
+rename to .env.development and type down the necessary fields.
