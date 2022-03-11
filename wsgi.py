@@ -1,6 +1,7 @@
 from flask import Flask, render_template
-from flask_babel import Babel
-from flask_sqlalchemy import SQLAlchemy
+from flask_babelex import Babel
+from app.models import db
+from config.admin import setup_admin
 
 # routes
 from app.routes.ShopRouter import ShopRouter
@@ -13,8 +14,13 @@ app = Flask(__name__,
 
 app.config.from_pyfile('config/project.py')
 app.register_blueprint(ShopRouter, url_prefix='/shops')
+
+
+# create babel for localisation
 babel = Babel(app, default_locale="en")
-db = SQLAlchemy(app)
+
+# Setup the flask-admin panel
+setup_admin(app)
 
 
 @babel.localeselector
@@ -28,6 +34,6 @@ def index():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'super secret key'
     app.debug = True
+    db.init_app(app)
     app.run()
