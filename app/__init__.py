@@ -1,15 +1,12 @@
 from flask import Flask
-
 from flask_babelex import Babel
-from app.models import db
 from flask_migrate import Migrate
 
+from app.models import db
 from config.admin import setup_admin
 
 # routes
 from app.routes.ShopRouter import ShopRouter
-
-
 
 
 # -- Configuration -- #
@@ -20,7 +17,6 @@ app = Flask(__name__,
 
 app.config.from_pyfile('../config/project.py')
 app.register_blueprint(ShopRouter, url_prefix='/shops')
-
 
 # create db
 db.init_app(app)
@@ -33,6 +29,7 @@ migrate = Migrate(app, db)
 
 # Setup the flask-admin panel
 setup_admin(app)
+
 
 @babel.localeselector
 def get_locale():

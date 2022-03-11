@@ -3,6 +3,11 @@ from dotenv import load_dotenv
 
 load_dotenv(os.path.join(os.path.dirname(__file__), 'env/.env.development'))
 
+# Application config
+ENV = os.environ.get("ENV")
+TESTING = os.environ.get("TESTING")
+DEBUG = os.environ.get("DEBUG")
+
 # Secret key
 SECRET_KEY = os.urandom(12)
 
