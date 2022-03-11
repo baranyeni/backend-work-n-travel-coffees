@@ -6,7 +6,7 @@ class ShopController:
         pass
 
     def list():
-        from app import Shop
+        from app.models.Shop import Shop
         shops = Shop.query.all()
 
         return jsonify(list(map(lambda shop: build_response(shop), shops)))
@@ -15,10 +15,10 @@ class ShopController:
 def build_response(shop):
     return {
         'id': shop.id,
-        'name': f'best_coffee_shop_{shop.id}',
-        'rating': shop.id,
-        'ratingCount': shop.id * shop.id,
+        'name': shop.name,
+        'rating': shop.rating,
+        'ratingCount': shop.ratingCount,
         'city': f'city_name_{shop.id}',
-        'address': f'address_text_{shop.id}',
+        'address': shop.address,
         'imageUrl': shop.imageUrl
     }

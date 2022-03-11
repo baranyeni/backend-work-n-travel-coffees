@@ -14,28 +14,41 @@ Users should;
 - Be able to star or pick as favorite selected shop
 - Be able to generate custom personal lists and add shops into them
 
-### Technical expectaions
+### Technical expectations
 
 - The platform will be accessed from browsers
 - It should have responsive behavior
 
+# Scripts & Configuration
 
-### Scripts & Configuration
+### Localisation
 To create messages.pot file from the text used in templates
-- pybabel extract -F babel.cfg -o locales/messages.pot ../web
+```bash
+pybabel extract -F babel.cfg -o locales/messages.pot ../web
+```
 
 To create a new translation
-- pybabel init -i messages.pot -d translations -l <lang_code>
+```bash
+pybabel init -i messages.pot -d translations -l <lang_code>
+```
 
 To compile our translations
-- pybabel compile -d translations
+```bash
+pybabel compile -d translations
+```
 
+### Database
 
-For DB management, open flask shell run in order;
-- from db.database import init_db
-- init_db
+To implement latest changes from migration files run;
+```bash
+flask db upgrade
+```
 
-## Environment Variables
-I had used the dotenv method to store our credentials. To specify
-environment variables you should duplicate the env/.env.sample and
-rename to .env.development and type down the necessary fields.
+To generate new migration;
+```bash
+flask db migrate -m '<migration_file_name>'
+```
+
+### Environment Variables
+To specify environment variables you should duplicate the `env/.env.sample` and
+rename to `.env.development` and type down the necessary fields.
