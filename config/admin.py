@@ -1,4 +1,4 @@
-from app.models import db
+from app import db
 from app.models.Shop import Shop
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
