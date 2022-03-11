@@ -10,7 +10,7 @@ gunicorn
 requests~=2.27.1
 
 # Localization
-flask-babel
+flask-babelex
 
 # Database helper
 Flask-SQLAlchemy~=2.0
@@ -19,5 +19,8 @@ Flask-SQLAlchemy~=2.0
 SQLAlchemy~=1.4.31
 pymysql
 
-# Environmental variables with dotenv
+# Environment variables with dotenv
 python-dotenv~=0.19.2
+
+# Admin panel
+flask-admin

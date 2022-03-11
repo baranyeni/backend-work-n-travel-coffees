@@ -12,3 +12,6 @@ BABEL_TRANSLATION_DIRECTORIES = 'config/locales/translations'
 # Database connection string
 SQLALCHEMY_DATABASE_URI = os.environ.get("DB_CONNECTION_STRING")
 SQLALCHEMY_TRACK_MODIFICATIONS = 'False'
+
+# Flask Admin theme
+FLASK_ADMIN_SWATCH = 'cerulean'
