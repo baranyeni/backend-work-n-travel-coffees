@@ -28,3 +28,6 @@ python-dotenv~=0.19.2
 
 # Admin panel
 flask-admin
+
+# User session management
+flask-login

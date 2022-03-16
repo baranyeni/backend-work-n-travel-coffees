@@ -12,8 +12,8 @@ from app.routes.ShopRouter import ShopRouter
 # -- Configuration -- #
 app = Flask(__name__,
             static_url_path='/assets',
-            static_folder='web/static',
-            template_folder='web/templates')
+            static_folder='../web/static',
+            template_folder='../web/templates')
 
 app.config.from_pyfile('../config/project.py')
 app.register_blueprint(ShopRouter, url_prefix='/shops')
@@ -27,8 +27,11 @@ babel = Babel(app, default_locale="en")
 # create migrate for migration
 migrate = Migrate(app, db)
 
-# Setup the flask-admin panel
+# setup the flask-admin panel
 setup_admin(app)
+
+# setup the flask-login
+# login_manager = LoginManager()
 
 
 @babel.localeselector
