@@ -31,3 +31,7 @@ flask-admin
 
 # User session management
 flask-login
+
+
+flask_wtf
+wtforms

@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 
 from app.models import db
 from config.admin import setup_admin
+from config.login import setup_login_manager
 
 # routes
 from app.routes.ShopRouter import ShopRouter
@@ -31,8 +32,7 @@ migrate = Migrate(app, db)
 setup_admin(app)
 
 # setup the flask-login
-# login_manager = LoginManager()
-
+setup_login_manager(app)
 
 @babel.localeselector
 def get_locale():
