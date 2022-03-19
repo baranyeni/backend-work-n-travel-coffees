@@ -10,7 +10,7 @@ gunicorn
 requests~=2.27.1
 
 # Localization
-flask-babelex
+flask-babel
 
 # Database helper
 Flask-SQLAlchemy~=2.0

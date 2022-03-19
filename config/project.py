@@ -12,7 +12,7 @@ DEBUG = os.environ.get("DEBUG")
 SECRET_KEY = os.urandom(12)
 
 # Babel settings
-BABEL_TRANSLATION_DIRECTORIES = 'config/locales/translations'
+BABEL_TRANSLATION_DIRECTORIES = '../config/locales/translations'
 
 # SQLAlchemy configurations
 SQLALCHEMY_DATABASE_URI = os.environ.get("DB_CONNECTION_STRING")

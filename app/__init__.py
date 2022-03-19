@@ -1,5 +1,5 @@
-from flask import Flask
-from flask_babelex import Babel
+from flask import Flask, render_template
+from flask_babel import Babel
 from flask_migrate import Migrate
 
 from app.models import db
@@ -37,3 +37,8 @@ setup_login_manager(app)
 @babel.localeselector
 def get_locale():
     return 'en'
+
+
+@app.route('/')
+def index():
+    return render_template("app/index/index.html")
