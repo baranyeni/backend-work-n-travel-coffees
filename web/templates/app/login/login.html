@@ -1,10 +1,20 @@
 <div class="login">
     <div class="form">
-        <form class="login-form">
+        <form class="login-form" action="/login/" method="post">
             <span class="material-icons">lock</span>
-            <input type="text" value="b@b.com" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-            <input type="password" placeholder="password" required />
+            <input name="email" type="text" value="b@b.com" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+            <input name="password" type="password" placeholder="password" required />
+            <input name="next_url" type="text" value="/admin" required />
             <button>login</button>
         </form>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </div>
+

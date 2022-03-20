@@ -1,10 +1,12 @@
 from flask import jsonify
+from flask_login import login_required
 
 
 class ShopController:
     def __init__(self):
         pass
 
+    @login_required
     def list():
         from app.models.Shop import Shop
         shops = Shop.query.all()

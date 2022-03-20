@@ -26,12 +26,11 @@ pymysql
 # Environment variables with dotenv
 python-dotenv~=0.19.2
 
-# Admin panel
+# Admin panel>1.6.0
 flask-admin
 
 # User session management
 flask-login
 
-
-flask_wtf
-wtforms
+# Password secure
+werkzeug
