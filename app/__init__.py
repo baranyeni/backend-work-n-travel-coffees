@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_babel import Babel
 from flask_migrate import Migrate
+from flasgger import Swagger
 
 from app.models import db
 from config.admin import setup_admin
@@ -24,17 +25,21 @@ app.register_blueprint(LoginRouter)
 # create db
 db.init_app(app)
 
-# create babel for localisation
-babel = Babel(app, default_locale="en")
-
 # create migrate for migration
 migrate = Migrate(app, db)
+
+# create babel for localisation
+babel = Babel(app, default_locale="en")
 
 # setup the flask-admin panel
 setup_admin(app)
 
 # setup the flask-login
 setup_login_manager(app)
+
+# setup Swagger docs
+swagger = Swagger(app)
+
 
 @babel.localeselector
 def get_locale():

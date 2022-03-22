@@ -1,0 +1,28 @@
+List Shops
+This endpoint lists all the shops added
+---
+definitions:
+  Shop:
+    type: object
+    properties:
+      id:
+        type: integer
+      address:
+        type: string
+      city:
+        type: string
+      imageUrl:
+        type: string
+      name:
+        type: string
+      rating:
+        type: integer
+      ratingCount:
+        type: integer
+  Color:
+    type: string
+responses:
+  200:
+    description: A list of shops
+    schema:
+      $ref: '#/definitions/Shop'

@@ -34,3 +34,6 @@ flask-login
 
 # Password secure
 werkzeug
+
+# Swagger implementation for Flask
+flasgger

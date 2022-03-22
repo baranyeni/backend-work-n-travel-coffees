@@ -1,5 +1,6 @@
 from flask import jsonify
 from flask_login import login_required
+from flasgger import swag_from
 
 
 class ShopController:
@@ -7,6 +8,7 @@ class ShopController:
         pass
 
     @login_required
+    @swag_from('../../config/docs/shops/list.yml')
     def list():
         from app.models.Shop import Shop
         shops = Shop.query.all()
