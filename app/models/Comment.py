@@ -9,4 +9,4 @@ class Comment(db.Model):
     text = db.Column(db.String(255),  nullable=False)
 
     def __repr__(self):
-        return '<Comments %r>' % self.name
+        return '<Comments %r>' % self.text
