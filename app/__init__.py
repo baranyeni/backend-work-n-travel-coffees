@@ -9,6 +9,7 @@ from config.login import setup_login_manager
 
 # routes
 from app.routes.ShopRouter import ShopRouter
+from app.routes.CommentsRouter import CommentsRouter
 from app.routes.LoginRouter import LoginRouter
 
 
@@ -20,6 +21,7 @@ app = Flask(__name__,
 
 app.config.from_pyfile('../config/project.py')
 app.register_blueprint(ShopRouter, url_prefix='/shops')
+app.register_blueprint(CommentsRouter, url_prefix='/comments')
 app.register_blueprint(LoginRouter)
 
 # create db

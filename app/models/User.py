@@ -42,3 +42,7 @@ class User(db.Model):
     def is_anonymous(self):
         """False, as anonymous users aren't supported."""
         return False
+
+    def user_id(self):
+        """Return , User Id Value"""
+        return self.id
