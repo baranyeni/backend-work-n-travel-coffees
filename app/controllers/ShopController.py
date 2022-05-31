@@ -1,6 +1,9 @@
-from flask import jsonify
+from flask import jsonify,request
 from flask_login import login_required
+from app.models.Shop import Shop
 from flasgger import swag_from
+from app.models import db
+from sqlalchemy.exc import IntegrityError
 
 
 class ShopController:
@@ -12,11 +15,32 @@ class ShopController:
     def list():
         from app.models.Shop import Shop
         shops = Shop.query.all()
+        return jsonify(list(map(lambda shop: build_response_list(shop), shops)))
 
-        return jsonify(list(map(lambda shop: build_response(shop), shops)))
+    @login_required
+    # @swag_from('../../config/docs/shops/create.yml')
+    def create():
+        try:
+            name = request.form.get('name')
+            rating = request.form.get('rating')
+            ratingCount = request.form.get('ratingCount')
+            address = request.form.get('address')
+            imageUrl = request.form.get('imageUrl')
+ 
+            item = Shop(name=name, rating = rating, ratingCount = ratingCount, address = address , imageUrl = imageUrl)
+            db.session.add(item)
+            db.session.commit()
+            return { "status": 200 }
+        except IntegrityError as err:
+            db.session.rollback()
+            return str(err)
+        except:  
+            db.session.rollback()
+            return { "status": 404 }
+        finally:
+            db.session.close()
 
-
-def build_response(shop):
+def build_response_list(shop):
     return {
         'id': shop.id,
         'name': shop.name,
@@ -24,5 +48,8 @@ def build_response(shop):
         'ratingCount': shop.ratingCount,
         'city': f'city_name_{shop.id}',
         'address': shop.address,
-        'imageUrl': shop.imageUrl
+        'imageUrl': shop.imageUrl,
+        "comments" : [
+                shop.comments
+        ]
     }
