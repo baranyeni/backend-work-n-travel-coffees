@@ -9,7 +9,7 @@ TESTING = os.environ.get("TESTING")
 DEBUG = os.environ.get("DEBUG")
 
 # Secret key
-SECRET_KEY = os.urandom(12)
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # Babel settings
 BABEL_TRANSLATION_DIRECTORIES = '../config/locales/translations'

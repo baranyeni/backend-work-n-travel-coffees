@@ -10,7 +10,7 @@ class ShopController:
     def __init__(self):
         pass
 
-    # @login_required
+    @login_required
     @swag_from('../../config/docs/shops/list.yml')
     def list():
         from app.models.Shop import Shop
