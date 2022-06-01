@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from flask_babel import Babel
 from flask_migrate import Migrate
 from flasgger import Swagger
+from datetime import timedelta
 
 from app.models import db
 from config.admin import setup_admin
@@ -49,6 +50,11 @@ swagger = Swagger(app)
 def get_locale():
     return 'en'
 
+
+@app.before_request
+def make_session_permanent():
+    session.modified = True
+    session.permanent = True
 
 @app.route('/')
 def index():
