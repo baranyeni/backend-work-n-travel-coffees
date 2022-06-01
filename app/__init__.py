@@ -56,6 +56,13 @@ def make_session_permanent():
     session.modified = True
     session.permanent = True
 
+
+@app.after_request
+def creds(response):
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    return response
+
+
 @app.route('/')
 def index():
     return render_template("app/index/index.html")
