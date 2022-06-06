@@ -1,8 +1,7 @@
-from unicodedata import name
-from flask import jsonify,request
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import login_required
+from flask import jsonify, request
 from app.models.Comment import Comment
+from app.models.User import token_required
+
 from flasgger import swag_from
 from app.models import db
 from sqlalchemy.exc import IntegrityError

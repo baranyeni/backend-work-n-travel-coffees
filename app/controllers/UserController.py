@@ -1,4 +1,5 @@
 from flask_login import logout_user
+from app.models.User import token_required
 
 
 class UserController:
