@@ -33,7 +33,8 @@ flask-admin
 flask-login
 
 # Password secure
-werkzeug
+werkzeug~=2.0.3
 
 # Swagger implementation for Flask
-flasgger
+flasgger~=0.9.5
+PyJWT~=1.7.1

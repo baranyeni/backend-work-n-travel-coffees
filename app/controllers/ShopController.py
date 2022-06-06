@@ -1,6 +1,6 @@
 from flask import jsonify, request
-from flask_login import login_required
 from app.models.Shop import Shop
+from app.models.User import token_required
 from flasgger import swag_from
 from app.models import db
 from sqlalchemy.exc import IntegrityError
@@ -10,14 +10,14 @@ class ShopController:
     def __init__(self):
         pass
 
-    @login_required
+    @token_required
     @swag_from('../../config/docs/shops/list.yml')
     def list():
         from app.models.Shop import Shop
         shops = Shop.query.all()
         return jsonify(list(map(lambda shop: build_response_list(shop), shops)))
 
-    @login_required
+    @token_required
     # @swag_from('../../config/docs/shops/create.yml')
     def create():
         try:

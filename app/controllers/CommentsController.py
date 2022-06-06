@@ -6,21 +6,20 @@ from app.models.Comment import Comment
 from flasgger import swag_from
 from app.models import db
 from sqlalchemy.exc import IntegrityError
-from flask_login import current_user
 
 
 class CommentsController:
     def __init__(self):
         pass
 
-    @login_required
+    @token_required
     @swag_from('../../config/docs/comments/list.yml')
     def list():
         from app.models.Comment import Comment
         comments = Comment.query.all()
         return jsonify(list(map(lambda comment: build_response_list(comment), comments)))
         
-    @login_required
+    @token_required
     # @swag_from('../../config/docs/comments/create.yml')
     def create():
         try:

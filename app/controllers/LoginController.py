@@ -1,7 +1,7 @@
 import flask
-from flask import redirect, request, flash
-from flask_login import login_user, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import redirect, request, flash, make_response, jsonify
+from flask_login import logout_user
+from werkzeug.security import generate_password_hash
 from app.models.User import User
 from app import db
 
@@ -11,25 +11,26 @@ class LoginController:
         pass
 
     def login():
-        email = request.form.get('email')
-        password = request.form.get('password')
-        remember = True if request.form.get('remember') else False
-        next_url = request.form.get('next_url')
-
-        user = User.query.filter_by(email=email).first()
-
-        if user is None:
-            return flask.render_template('app/login/login.html')
-        elif User.check_password(user, password=password):
-            login_user(user, remember=remember)
-
-            if next_url is not None:
-                return flask.redirect(next_url)
-            else:
-                return "Congrats! You are now logged in.."
-        else:
-            flash("Wrong password or something")
-            return redirect('/login')
+        post_data = request.form
+        try:
+            user = User.query.filter_by(
+                email=post_data.get('email')
+            ).first()
+            auth_token = user.encode_auth_token(user.id)
+            if auth_token:
+                responseObject = {
+                    'status': 'success',
+                    'message': 'Successfully logged in.',
+                    'auth_token': auth_token.decode()
+                }
+                return make_response(jsonify(responseObject)), 200
+        except Exception as e:
+            print(e)
+            responseObject = {
+                'status': 'fail',
+                'message': 'Try again'
+            }
+            return make_response(jsonify(responseObject)), 500
 
     def signup():
         if flask.request.method == 'GET':
