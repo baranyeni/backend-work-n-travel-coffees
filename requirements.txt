@@ -37,4 +37,9 @@ werkzeug~=2.0.3
 
 # Swagger implementation for Flask
 flasgger~=0.9.5
+
+# To be able to use Bearer auth
 PyJWT~=1.7.1
+
+#CORS solver library
+flask-cors

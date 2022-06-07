@@ -2,7 +2,7 @@ from flask import Flask, render_template, session
 from flask_babel import Babel
 from flask_migrate import Migrate
 from flasgger import Swagger
-from datetime import timedelta
+from flask_cors import CORS
 
 from app.models import db
 from config.admin import setup_admin
@@ -44,6 +44,9 @@ setup_login_manager(app)
 
 # setup Swagger docs
 swagger = Swagger(app)
+
+# Allow CORS to not to have problem
+CORS(app)
 
 
 @babel.localeselector
