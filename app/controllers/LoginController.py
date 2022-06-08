@@ -1,5 +1,5 @@
 import flask
-from flask import redirect, request, flash, make_response, jsonify
+from flask import redirect, request, make_response, jsonify
 from flask_login import logout_user
 from werkzeug.security import generate_password_hash
 from app.models.User import User
@@ -43,7 +43,7 @@ class LoginController:
         user = User.query.filter_by(email=email).first()
 
         if user:
-            flash("This user is already signed up! You can log in.")
+            # flash("This user is already signed up! You can log in.")
             return redirect("/login")
 
         new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
@@ -51,7 +51,29 @@ class LoginController:
         db.session.add(new_user)
         db.session.commit()
 
-        return redirect("/admin")
+        try:
+            user = User.query.filter_by(
+                email=email
+            ).first()
+
+            auth_token = user.encode_auth_token(user.id)
+            if auth_token:
+                responseObject = {
+                    'status': 'success',
+                    'message': 'Successfully logged in.',
+                    'auth_token': auth_token.decode()
+                }
+                return make_response(jsonify(responseObject)), 200
+        except Exception as e:
+            db.session.rollback()
+            print(e)
+            responseObject = {
+                'status': 'fail',
+                'message': 'Try again'
+            }
+            return make_response(jsonify(responseObject)), 500
+        finally:
+            db.session.close()
 
     def logout():
         logout_user()
